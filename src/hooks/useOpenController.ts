@@ -1,11 +1,13 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 
-export default function useOpenController(initialState: boolean) {
-    const [isOpen, setOpenState] = useState(initialState);
+export default function useOpenController() {
+    const [expandedRows, setExpandedRows] = useState<number[]>([]);
 
-    const toggle = useCallback(() => {
-        setOpenState((state) => !state);
-    }, [setOpenState]);
+    const handleExpandClick = (rowId: number) => {
+        setExpandedRows(expandedRows.includes(rowId)
+            ? expandedRows.filter(id => id !== rowId)
+            : [...expandedRows, rowId]);
+    };
 
-    return { isOpen, toggle };
+    return { expandedRows, handleExpandClick };
 }

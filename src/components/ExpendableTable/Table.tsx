@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import TableRow from './TableRow';
 import NestedTable from './NestedTable';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useUsers } from '../../hooks/useQuery';
+import useOpenController from '../../hooks/useOpenController';
 
 const columns = [
     { key: 'name', label: 'Name' },
@@ -13,15 +14,8 @@ const columns = [
 ];
 
 const ExpendableTable = () => {
-    const [expandedRows, setExpandedRows] = useState<number[]>([]);
-
+    const { expandedRows, handleExpandClick } = useOpenController();
     const { data: mainTableData, isError, isLoading } = useUsers();
-
-    const handleExpandClick = (rowId: number) => {
-        setExpandedRows(expandedRows.includes(rowId)
-            ? expandedRows.filter(id => id !== rowId)
-            : [...expandedRows, rowId]);
-    };
 
     if (isLoading) return <div>Loading...</div>
     if (isError) return <div>Error...</div>
