@@ -4,20 +4,21 @@ import { useEffect, useState } from 'react';
 
 type ProductListFiltersProps = {
     onChange: (filters: ProductFilters) => void;
+    initCategory: ProductFilters['category']
 };
 
 export default function ProductListFilters({
     onChange,
+    initCategory
 }: ProductListFiltersProps) {
     const [search, setSearch] = useState<ProductFilters['search']>();
     const debouncedSearch = useDebounce(search);
 
-    const [category, setCategory] = useState<ProductFilters['category']>();
-    const [maxPrice, setMaxPrice] = useState<ProductFilters['maxPrice']>();
+    const [category, setCategory] = useState<ProductFilters['category']>(initCategory);
 
     useEffect(() => {
-        onChange({ category, maxPrice, search: debouncedSearch });
-    }, [category, debouncedSearch, maxPrice]);
+        onChange({ category, search: debouncedSearch });
+    }, [category, debouncedSearch]);
 
     return (
         <div className='product-filter-container'>
@@ -31,24 +32,14 @@ export default function ProductListFilters({
                 value={category}
                 onChange={(e) => {
                     const value = e.target.value as ProductFilters['category'];
-                    setCategory(value === 'all' ? undefined : value);
+                    setCategory(value);
                 }
                 }
             >
-                <option value="all">All</option>
-                <option value="first">First</option>
-                <option value="second">Second</option>
-                <option value="third">Third</option>
-            </select>
-            <select
-                value={maxPrice}
-                onChange={(e) =>
-                    setMaxPrice(e.target.value ? parseInt(e.target.value) : undefined)
-                }
-            >
-                <option value="100">100</option>
-                <option value="500">500</option>
-                <option value="1000">1000</option>
+                <option value="comedy">Comedy</option>
+                <option value="drama">Drama</option>
+                <option value="horror">Horror</option>
+                <option value="family">Family</option>
             </select>
         </div>
     );

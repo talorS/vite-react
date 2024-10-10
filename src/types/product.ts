@@ -1,7 +1,6 @@
 export type Product = {
     id: number;
-    name: string;
-    category: 'first' | 'second' | 'third';
-    price: number;
-    image: string;
+    title: string;
+    posterURL: string;
+    imdbId: string;
 };

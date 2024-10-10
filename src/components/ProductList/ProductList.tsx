@@ -9,10 +9,8 @@ export default function ProductList({ products }: ProductListProps) {
         <div className='product-cards-container'>
             {products.map((product) => (
                 <div key={product.id} className='product-card'>
-                    <h2>{product.name}</h2>
-                    <p>{product.category}</p>
-                    <p style={{ opacity: 0.5 }}>{product.price}$</p>
-                    <img src={product.image} alt={product.name} style={{ borderRadius: '50%' }} />
+                    <h2>{product.title}</h2>
+                    <img src={product.posterURL} alt={product.imdbId} style={{ borderRadius: '50%' }} />
                 </div>
             ))}
         </div>

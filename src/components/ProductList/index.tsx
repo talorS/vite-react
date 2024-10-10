@@ -8,9 +8,8 @@ import './style.css';
 
 function App() {
     const [search, setSearch] = useState<ProductFilters['search']>();
-    const [category, setCategory] = useState<ProductFilters['category']>();
-    const [maxPrice, setMaxPrice] = useState<ProductFilters['maxPrice']>();
-    const { data, isFetching } = useFetchWithFilter({ category, maxPrice, search });
+    const [category, setCategory] = useState<ProductFilters['category']>('comedy');
+    const { data, isFetching } = useFetchWithFilter({ category, search });
 
     return (
         <div>
@@ -18,9 +17,9 @@ function App() {
             <ProductListFilters
                 onChange={(filters) => {
                     setCategory(filters.category);
-                    setMaxPrice(filters.maxPrice);
                     setSearch(filters.search);
                 }}
+                initCategory={category}
             />
             {data && <ProductList products={data} />}
             {isFetching && <p>Loading...</p>}

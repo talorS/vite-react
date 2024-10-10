@@ -22,78 +22,7 @@ const accordionData = [
 export default function App() {
   return (
     <>
-      <Accordion>
-        {accordionData.map((item, index) => (
-          <Accordion.Item key={item.id} index={index}>
-            {({ isActive }) => (
-              <>
-                <Accordion.Button index={index}>{item.title}</Accordion.Button>
-                <Accordion.Content isActive={isActive}>
-                  {item.content}
-                </Accordion.Content>
-              </>
-            )}
-          </Accordion.Item>
-        ))}
-      </Accordion>
-      <hr />
-      <div className="tabs-wrapper">
-        <Tabs>
-          <Tabs.Titles items={tabData.map(({ id, title }) => ({ id, title }))} />
-          <Tabs.Contents
-            items={tabData.map(({ id, content }) => ({
-              id,
-              content: <p>{content}</p>,
-            }))}
-          />
-        </Tabs>
-      </div>
-      <hr />
-      <PostCard
-        post={{
-          id: 1,
-          title: 'Post Card',
-          content: 'This is the first post',
-          user: {
-            id: 1,
-            name: 'John Doe'
-          }
-        }}
-      >
-        <PostCard.Title />
-        <PostCard.Content />
-        <PostCard.User />
-        <PostCard.Buttons />
-      </PostCard>
-      <hr />
-      <div className="flex justify-center items-center">
-        <div>
-          <Modal>
-            <Modal.Header title="This is a compound component" />
-            <Modal.Body
-              description="Here is the description of the modal body."
-              children={
-                <label>
-                  What's your name?
-                  <input type="text" />
-                </label>
-              }
-            />
-            <Modal.Footer
-              confirmLable='Confirm'
-              closeLable='Close'
-            />
-          </Modal>
-        </div>
-      </div>
-      <hr />
-      <ExpendableTable />
-      <hr />
-      <TableWithPagination />
-      <hr />
       <ProductList />
-      <hr />
-      <InfinitePagination />
     </>
   );
 }

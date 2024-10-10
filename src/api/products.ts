@@ -1,31 +1,22 @@
-import { products } from './data/products';
+import { Product } from "../types/product";
 
 export type ProductFilters = {
-    category?: 'all' | 'first' | 'second' | 'third';
-    maxPrice?: number;
+    category?: 'comedy' | 'drama' | 'horror' | 'family';
     search?: string;
 };
 
+const fetcher = async (category: ProductFilters['category']): Promise<Product[]> => {
+    const response = await fetch(`https://api.sampleapis.com/movies/${category}`);
+    const json = await response.json();
+    return json;
+}
+
 export const fetchProducts = async (options?: ProductFilters) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    let filteredProducts = products;
-
-    if (options?.category) {
-        filteredProducts = filteredProducts.filter((product) => {
-            return product.category === options.category;
-        });
-    }
-
-    if (options?.maxPrice) {
-        filteredProducts = filteredProducts.filter((product) => {
-            return product.price >= (options.maxPrice as number);
-        });
-    }
+    let filteredProducts = await fetcher(options?.category);
 
     if (options?.search) {
         filteredProducts = filteredProducts.filter((product) => {
-            return product.name.toLowerCase().includes(options.search!.toLowerCase());
+            return product.title.toLowerCase().startsWith(options.search!.toLowerCase());
         });
     }
 
