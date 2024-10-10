@@ -13,7 +13,7 @@ function App() {
 
     return (
         <div>
-            <h1>Products</h1>
+            <h1>Movies</h1>
             <ProductListFilters
                 onChange={(filters) => {
                     setCategory(filters.category);
