@@ -1,0 +1,18 @@
+/* Styles for the main table */
+table tr:nth-child(even) {
+    background-color: pink;
+}
+
+table tr:nth-child(odd) {
+    background-color: white;
+}
+
+/* Styles for nested tables */
+table table tr:nth-child(even) {
+    background-color: gainsboro;
+}
+
+table table tr:nth-child(odd) {
+    background-color: white;
+    /* You can change this if needed */
+}

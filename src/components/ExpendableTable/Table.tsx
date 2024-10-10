@@ -4,6 +4,7 @@ import NestedTable from './NestedTable';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useUsers } from '../../hooks/useQuery';
 import useOpenController from '../../hooks/useOpenController';
+import './style.css'
 
 const columns = [
     { key: 'name', label: 'Name' },
