@@ -20,7 +20,7 @@ export default function ProductListFilters({
     }, [category, debouncedSearch, maxPrice]);
 
     return (
-        <div style={{ display: 'flex', gap: '5px' }}>
+        <div className='product-filter-container'>
             <input
                 type="text"
                 value={search}

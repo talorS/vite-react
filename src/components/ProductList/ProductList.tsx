@@ -1,5 +1,4 @@
 import { Product } from '../../types/product';
-import './style.css'
 
 type ProductListProps = {
     products: Product[];

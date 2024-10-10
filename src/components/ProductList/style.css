@@ -8,3 +8,8 @@
     flex: 0 1 calc(33.33% - 20px);
     text-align: center;
 }
+
+.product-filter-container {
+    display: flex;
+    gap: 5px;
+}

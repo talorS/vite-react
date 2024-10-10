@@ -4,6 +4,7 @@ import { ProductFilters } from '../../api/products';
 import { useFetchWithFilter } from '../../hooks/useQuery';
 import ProductList from '../../components/ProductList/ProductList';
 import ProductListFilters from '../../components/ProductList/ProductListFilters';
+import './style.css';
 
 function App() {
     const [search, setSearch] = useState<ProductFilters['search']>();
