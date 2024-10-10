@@ -34,14 +34,14 @@ function UserCard() {
     }
 
     return (
-        <div className="flex flex-col gap-2">
+        <>
             {data?.pages.map((page, index) => {
                 return (
-                    <div key={index} className="flex flex-col gap-2">
+                    <div key={index} style={{ display: 'flex', gap: '1px' }}>
                         {page.map((item) => {
                             return (
-                                <div key={item.id} className="rounded-md bg-grayscale-700 p-4">
-                                    <img width={250} height={250} src={item.url} alt={item.title} className="rounded-md" />
+                                <div key={item.id}>
+                                    <img width={150} height={150} src={item.url} alt={item.title} className="rounded-md" />
                                 </div>
                             );
                         })}
@@ -54,8 +54,10 @@ function UserCard() {
                     height: 100,
                 }}
             >
-                {isFetchingNextPage && 'Loading More...'}</div>
-        </div>
+                {isFetchingNextPage && 'Loading More...'}
+            </div>
+        </>
+
     );
 }
 

@@ -12,10 +12,8 @@ function App() {
     const { data, isFetching } = useFetchWithFilter({ category, maxPrice, search });
 
     return (
-        <div className="flex flex-col gap-2">
-            <div>
-                <h1 className="text-4xl font-bold">Products</h1>
-            </div>
+        <div>
+            <h1>Products</h1>
             <ProductListFilters
                 onChange={(filters) => {
                     setCategory(filters.category);
@@ -23,10 +21,8 @@ function App() {
                     setSearch(filters.search);
                 }}
             />
-            <div>
-                {data && <ProductList products={data} />}
-                {isFetching && <p>Loading...</p>}
-            </div>
+            {data && <ProductList products={data} />}
+            {isFetching && <p>Loading...</p>}
         </div>
     );
 }

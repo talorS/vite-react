@@ -20,7 +20,7 @@ export default function ProductListFilters({
     }, [category, debouncedSearch, maxPrice]);
 
     return (
-        <div className="flex flex-row gap-2">
+        <div style={{ display: 'flex', gap: '5px' }}>
             <input
                 type="text"
                 value={search}

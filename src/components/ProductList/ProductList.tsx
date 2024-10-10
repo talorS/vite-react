@@ -1,4 +1,5 @@
 import { Product } from '../../types/product';
+import './style.css'
 
 type ProductListProps = {
     products: Product[];
@@ -6,20 +7,13 @@ type ProductListProps = {
 
 export default function ProductList({ products }: ProductListProps) {
     return (
-        <div className="flex flex-row flex-wrap gap-4">
+        <div className='product-cards-container'>
             {products.map((product) => (
-                <div
-                    key={product.id}
-                    className="flex w-[250px] flex-col gap-4 rounded-md bg-grayscale-700 p-4"
-                >
-                    <div className="flex flex-row justify-between">
-                        <div>
-                            <h2 className="text-xl font-bold">{product.name}</h2>
-                            <p className="opacity-50">{product.category}</p>
-                        </div>
-                        <p>${product.price}</p>
-                    </div>
-                    <img src={product.image} alt={product.name} className="rounded-md" />
+                <div key={product.id} className='product-card'>
+                    <h2>{product.name}</h2>
+                    <p>{product.category}</p>
+                    <p style={{ opacity: 0.5 }}>{product.price}$</p>
+                    <img src={product.image} alt={product.name} style={{ borderRadius: '50%' }} />
                 </div>
             ))}
         </div>
